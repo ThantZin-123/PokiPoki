@@ -17,242 +17,86 @@
         body {
             min-height: 100vh;
             font-family: Arial, sans-serif;
-
-            background:
-                radial-gradient(circle at 15% 20%, #fff0f7 0%, transparent 30%),
-                radial-gradient(circle at 85% 80%, #e5faff 0%, transparent 30%),
-                linear-gradient(135deg, #ffd8e8, #d8f4ff);
-
+            background: linear-gradient(135deg, #ffd6e7, #d8f3ff);
             display: flex;
             justify-content: center;
             align-items: center;
-
             padding: 20px;
-
             overflow-x: hidden;
         }
 
         .container {
             width: 100%;
-            max-width: 680px;
-
-            background: rgba(255, 255, 255, 0.94);
-
-            border-radius: 35px;
-
-            padding: 42px 25px;
-
+            max-width: 650px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 35px 25px;
             text-align: center;
-
-            box-shadow:
-                0 25px 70px rgba(0, 0, 0, 0.16);
-
-            position: relative;
-            overflow: hidden;
-        }
-
-        .container::before {
-            content: "";
-
-            position: absolute;
-
-            width: 180px;
-            height: 180px;
-
-            border-radius: 50%;
-
-            background: #ffd9e9;
-
-            opacity: 0.35;
-
-            top: -90px;
-            left: -70px;
-        }
-
-        .container::after {
-            content: "";
-
-            position: absolute;
-
-            width: 180px;
-            height: 180px;
-
-            border-radius: 50%;
-
-            background: #d6f6ff;
-
-            opacity: 0.45;
-
-            bottom: -90px;
-            right: -70px;
-        }
-
-        #question,
-        #reveal {
-            position: relative;
-            z-index: 2;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
         .main-icon {
-            font-size: 72px;
-
-            margin-bottom: 12px;
-
-            animation: floating 2.5s ease-in-out infinite;
-        }
-
-        @keyframes floating {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-8px);
-            }
+            font-size: 70px;
+            margin-bottom: 15px;
         }
 
         h1 {
-            font-size: 38px;
-
             color: #333;
-
-            margin-bottom: 12px;
-
-            font-weight: 800;
+            font-size: 38px;
+            margin-bottom: 15px;
         }
 
         .description {
-            color: #777;
-
+            color: #666;
             font-size: 18px;
-
-            line-height: 1.5;
-
-            margin-bottom: 32px;
+            margin-bottom: 30px;
         }
 
         .buttons {
             display: flex;
-
             flex-direction: column;
-
+            gap: 15px;
             align-items: center;
-
-            gap: 14px;
-
-            min-height: 280px;
-
-            position: relative;
         }
 
         button {
+            width: 85%;
+            max-width: 350px;
+            padding: 16px 20px;
             border: none;
-
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: bold;
             cursor: pointer;
-
-            font-family: Arial, sans-serif;
-
-            font-weight: 700;
-
-            transition:
-                transform 0.3s ease,
-                box-shadow 0.3s ease,
-                left 0.4s ease,
-                top 0.4s ease;
-
-            box-shadow:
-                0 8px 20px rgba(0, 0, 0, 0.13);
-
-            position: relative;
+            transition: 0.3s;
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.12);
         }
 
         button:hover {
-            box-shadow:
-                0 13px 28px rgba(0, 0, 0, 0.18);
-        }
-
-        button:active {
-            transform: scale(0.95);
-        }
-
-        /* SMALL WRONG BUTTONS */
-
-        #iceCream,
-        #hotpot {
-            width: 65%;
-
-            max-width: 280px;
-
-            padding: 13px 18px;
-
-            border-radius: 18px;
-
-            font-size: 17px;
+            transform: scale(1.05);
         }
 
         #iceCream {
-            background: linear-gradient(
-                135deg,
-                #ffc1df,
-                #ffdaeb
-            );
-
+            background: #ffb6d9;
             color: #6b2148;
         }
 
         #hotpot {
-            background: linear-gradient(
-                135deg,
-                #ffb66f,
-                #ffd092
-            );
-
-            color: #71370f;
+            background: #ffb36b;
+            color: #6b3514;
         }
-
-        /* BIG CORRECT BUTTON */
 
         #nothing {
-            width: 90%;
-
-            max-width: 420px;
-
-            padding: 23px 25px;
-
-            border-radius: 25px;
-
-            font-size: 26px;
-
-            background: linear-gradient(
-                135deg,
-                #86e99a,
-                #baf3c4
-            );
-
+            background: #9be7a5;
             color: #205a2b;
-
-            box-shadow:
-                0 12px 28px rgba(54, 150, 76, 0.25);
-
-            z-index: 20;
-        }
-
-        #nothing:hover {
-            transform: scale(1.04);
         }
 
         #message {
-            min-height: 35px;
-
-            margin-top: 10px;
-
+            min-height: 30px;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
             color: #e75480;
-
-            font-size: 19px;
-
-            font-weight: 700;
         }
 
         #reveal {
@@ -264,143 +108,59 @@
         }
 
         .final-text {
-            color: #666;
-
             font-size: 19px;
-
-            line-height: 1.6;
-
+            color: #555;
             margin-bottom: 25px;
         }
 
         video {
             width: 100%;
-
-            max-width: 560px;
-
-            border-radius: 24px;
-
+            max-width: 550px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             background: #000;
-
-            box-shadow:
-                0 15px 40px rgba(0, 0, 0, 0.22);
-        }
-
-        .small-text {
-            color: #999;
-
-            font-size: 14px;
-
-            margin-top: 18px;
         }
 
         .floating-food {
             position: fixed;
-
             pointer-events: none;
-
             font-size: 35px;
-
-            animation:
-                floatUp 4s linear forwards;
-
+            animation: floatUp 4s linear forwards;
             z-index: 9999;
         }
 
         @keyframes floatUp {
-
             0% {
-                transform:
-                    translateY(0)
-                    rotate(0deg);
-
+                transform: translateY(0) rotate(0deg);
                 opacity: 1;
             }
 
             100% {
-                transform:
-                    translateY(-100vh)
-                    rotate(360deg);
-
+                transform: translateY(-100vh) rotate(360deg);
                 opacity: 0;
             }
         }
 
-        .shake {
-            animation:
-                shake 0.4s ease;
-        }
-
-        @keyframes shake {
-
-            0% {
-                transform: translateX(0);
-            }
-
-            25% {
-                transform: translateX(-7px);
-            }
-
-            50% {
-                transform: translateX(7px);
-            }
-
-            75% {
-                transform: translateX(-5px);
-            }
-
-            100% {
-                transform: translateX(0);
-            }
-        }
-
         @media (max-width: 500px) {
-
-            body {
-                padding: 12px;
-            }
-
             .container {
-                padding: 32px 16px;
-
-                border-radius: 28px;
-            }
-
-            .main-icon {
-                font-size: 55px;
+                padding: 30px 18px;
             }
 
             h1 {
-                font-size: 29px;
+                font-size: 30px;
             }
 
             .description {
                 font-size: 16px;
             }
 
-            #iceCream,
-            #hotpot {
-                width: 62%;
-
-                font-size: 15px;
-
-                padding: 12px 15px;
+            button {
+                width: 95%;
+                font-size: 18px;
             }
 
-            #nothing {
-                width: 92%;
-
-                font-size: 23px;
-
-                padding: 21px 20px;
-            }
-
-            #message {
-                font-size: 17px;
-            }
-
-            .final-text {
-                font-size: 17px;
+            .main-icon {
+                font-size: 55px;
             }
         }
     </style>
@@ -410,45 +170,30 @@
 
     <div class="container">
 
-        <!-- QUESTION -->
-
+        <!-- QUESTION SECTION -->
         <div id="question">
 
             <div class="main-icon">
                 🍦🍲
             </div>
 
-            <h1>
-                Choose One 🍽️
-            </h1>
+            <h1>Choose One 🍽️</h1>
 
-            <p
-                class="description"
-                id="description"
-            >
+            <p class="description" id="description">
                 Think carefully... Which one would you choose? 🤔
             </p>
 
             <div class="buttons">
 
-                <button
-                    id="iceCream"
-                    onclick="wrongChoice('Ice Cream', this)"
-                >
+                <button id="iceCream" onclick="wrongChoice('Ice Cream')">
                     🍦 Ice Cream
                 </button>
 
-                <button
-                    id="hotpot"
-                    onclick="wrongChoice('Hotpot', this)"
-                >
+                <button id="hotpot" onclick="wrongChoice('Hotpot')">
                     🍲 Hotpot
                 </button>
 
-                <button
-                    id="nothing"
-                    onclick="correctChoice()"
-                >
+                <button id="nothing" onclick="correctChoice()">
                     🚫 Nothing
                 </button>
 
@@ -459,8 +204,7 @@
         </div>
 
 
-        <!-- REVEAL -->
-
+        <!-- REVEAL SECTION -->
         <div id="reveal">
 
             <div class="main-icon">
@@ -483,17 +227,9 @@
                 playsinline
                 onplay="videoStarted()"
             >
-                <source
-                    src="video.mp4"
-                    type="video/mp4"
-                >
-
+                <source src="video.mp4" type="video/mp4">
                 Your browser does not support the video.
             </video>
-
-            <p class="small-text">
-                Enjoy the video! 🍿✨
-            </p>
 
         </div>
 
@@ -503,45 +239,33 @@
     <script>
 
         // =====================================================
-        // FORMSPREE
+        // FORMSPREE URL
+        // Replace this with your Formspree endpoint.
+        //
+        // Example:
+        // https://formspree.io/f/xxxxxxxx
         // =====================================================
 
-        const FORMSPREE_URL =
-            "https://formspree.io/f/mljdjlka";
+        const FORMSPREE_URL = "https://formspree.io/f/mljdjlka";
 
 
         // =====================================================
         // VISITOR ID
         // =====================================================
 
-        let visitorId =
-            sessionStorage.getItem("visitorId");
-
+        let visitorId = sessionStorage.getItem("visitorId");
 
         if (!visitorId) {
 
-            if (
-                window.crypto &&
-                crypto.randomUUID
-            ) {
-
-                visitorId =
-                    crypto.randomUUID();
-
+            if (window.crypto && crypto.randomUUID) {
+                visitorId = crypto.randomUUID();
             } else {
-
                 visitorId =
                     Date.now().toString(36) +
-                    Math.random()
-                        .toString(36)
-                        .substring(2);
-
+                    Math.random().toString(36).substring(2);
             }
 
-            sessionStorage.setItem(
-                "visitorId",
-                visitorId
-            );
+            sessionStorage.setItem("visitorId", visitorId);
         }
 
 
@@ -550,57 +274,43 @@
         // =====================================================
 
         let wrongCount = 0;
-
         let videoLogged = false;
 
 
         // =====================================================
-        // FORMSPREE LOGGER
+        // FORMSPREE EVENT LOGGER
         // =====================================================
 
-        async function logEvent(
-            event,
-            option = ""
-        ) {
+        async function logEvent(event, option = "") {
 
             try {
 
-                await fetch(
-                    FORMSPREE_URL,
-                    {
-                        method: "POST",
+                await fetch(FORMSPREE_URL, {
 
-                        headers: {
-                            "Content-Type":
-                                "application/json",
+                    method: "POST",
 
-                            "Accept":
-                                "application/json"
-                        },
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
 
-                        body: JSON.stringify({
+                    body: JSON.stringify({
 
-                            visitorId:
-                                visitorId,
+                        visitorId: visitorId,
 
-                            event:
-                                event,
+                        event: event,
 
-                            option:
-                                option,
+                        option: option,
 
-                            wrongCount:
-                                wrongCount,
+                        wrongCount: wrongCount,
 
-                            time:
-                                new Date()
-                                    .toISOString(),
+                        time: new Date().toISOString(),
 
-                            page:
-                                window.location.href
-                        })
-                    }
-                );
+                        page: window.location.href
+
+                    })
+
+                });
 
             } catch (error) {
 
@@ -610,6 +320,7 @@
                 );
 
             }
+
         }
 
 
@@ -617,29 +328,20 @@
         // PAGE VISIT
         // =====================================================
 
-        window.addEventListener(
-            "load",
-            function () {
+        window.addEventListener("load", function () {
 
-                logEvent(
-                    "Page Visit"
-                );
+            logEvent("Page Visit");
 
-            }
-        );
+        });
 
 
         // =====================================================
         // WRONG CHOICE
         // =====================================================
 
-        function wrongChoice(
-            option,
-            clickedButton
-        ) {
+        function wrongChoice(option) {
 
             wrongCount++;
-
 
             logEvent(
                 "Option Pressed",
@@ -648,26 +350,14 @@
 
 
             const message =
-                document.getElementById(
-                    "message"
-                );
-
+                document.getElementById("message");
 
             const description =
-                document.getElementById(
-                    "description"
-                );
-
+                document.getElementById("description");
 
             const nothingButton =
-                document.getElementById(
-                    "nothing"
-                );
+                document.getElementById("nothing");
 
-
-            // =================================================
-            // MESSAGES
-            // =================================================
 
             if (wrongCount === 1) {
 
@@ -721,84 +411,35 @@
 
 
             // =================================================
-            // SHAKE WRONG BUTTON
+            // MAKE NOTHING BUTTON HARDER TO PRESS
             // =================================================
-
-            clickedButton.classList.remove(
-                "shake"
-            );
-
-            void clickedButton.offsetWidth;
-
-            clickedButton.classList.add(
-                "shake"
-            );
-
-
-            // =================================================
-            // MOVE NOTHING BUTTON
-            // TO THE POSITION OF THE
-            // WRONG BUTTON
-            // =================================================
-
-            const clickedRect =
-                clickedButton.getBoundingClientRect();
-
-            const nothingRect =
-                nothingButton.getBoundingClientRect();
-
-
-            const clickedCenterX =
-                clickedRect.left +
-                clickedRect.width / 2;
-
-            const clickedCenterY =
-                clickedRect.top +
-                clickedRect.height / 2;
-
-
-            const nothingCenterX =
-                nothingRect.left +
-                nothingRect.width / 2;
-
-            const nothingCenterY =
-                nothingRect.top +
-                nothingRect.height / 2;
-
-
-            const moveX =
-                clickedCenterX -
-                nothingCenterX;
-
-            const moveY =
-                clickedCenterY -
-                nothingCenterY;
-
-
-            /*
-                Move the BIG Nothing button
-                to the exact location of the
-                button that was pressed.
-            */
-
-            nothingButton.style.transform =
-                `translate(${moveX}px, ${moveY}px)`;
-
-
-            /*
-                Make the correct button slightly
-                bigger after each wrong attempt.
-            */
 
             const scale =
-                Math.min(
-                    1 + wrongCount * 0.03,
-                    1.18
-                );
-
+                Math.min(1 + wrongCount * 0.08, 1.6);
 
             nothingButton.style.transform =
-                `translate(${moveX}px, ${moveY}px) scale(${scale})`;
+                `scale(${scale})`;
+
+
+            const maxMove =
+                Math.min(wrongCount * 10, 60);
+
+            const moveX =
+                (Math.random() * maxMove * 2) -
+                maxMove;
+
+            const moveY =
+                (Math.random() * maxMove * 2) -
+                maxMove;
+
+            nothingButton.style.position =
+                "relative";
+
+            nothingButton.style.left =
+                moveX + "px";
+
+            nothingButton.style.top =
+                moveY + "px";
 
         }
 
@@ -817,14 +458,12 @@
 
             document.getElementById(
                 "question"
-            ).style.display =
-                "none";
+            ).style.display = "none";
 
 
             document.getElementById(
                 "reveal"
-            ).style.display =
-                "block";
+            ).style.display = "block";
 
 
             const video =
@@ -836,15 +475,13 @@
             video.currentTime = 0;
 
 
-            video.play().catch(
-                function () {
+            video.play().catch(function () {
 
-                    console.log(
-                        "Autoplay was blocked by browser."
-                    );
+                console.log(
+                    "Autoplay was blocked by browser."
+                );
 
-                }
-            );
+            });
 
 
             createFoodEmojis();
@@ -862,7 +499,6 @@
 
                 videoLogged = true;
 
-
                 logEvent(
                     "Video Played",
                     "video.mp4"
@@ -874,13 +510,12 @@
 
 
         // =====================================================
-        // FLOATING FOOD
+        // FLOATING FOOD EMOJIS
         // =====================================================
 
         function createFoodEmojis() {
 
             const foods = [
-
                 "🍦",
                 "🍨",
                 "🍧",
@@ -891,73 +526,52 @@
                 "🍰",
                 "🍩",
                 "🍓"
-
             ];
 
 
-            for (
-                let i = 0;
-                i < 25;
-                i++
-            ) {
+            for (let i = 0; i < 25; i++) {
 
-                setTimeout(
-                    function () {
+                setTimeout(function () {
 
-                        const emoji =
-                            document.createElement(
-                                "div"
-                            );
+                    const emoji =
+                        document.createElement("div");
 
+                    emoji.className =
+                        "floating-food";
 
-                        emoji.className =
-                            "floating-food";
-
-
-                        emoji.innerHTML =
-                            foods[
-                                Math.floor(
-                                    Math.random() *
-                                    foods.length
-                                )
-                            ];
+                    emoji.innerHTML =
+                        foods[
+                            Math.floor(
+                                Math.random() *
+                                foods.length
+                            )
+                        ];
 
 
-                        emoji.style.left =
-                            Math.random() *
-                            100 +
-                            "vw";
+                    emoji.style.left =
+                        Math.random() * 100 + "vw";
+
+                    emoji.style.top =
+                        "100vh";
 
 
-                        emoji.style.top =
-                            "100vh";
+                    emoji.style.animationDuration =
+                        (3 + Math.random() * 3) +
+                        "s";
 
 
-                        emoji.style.animationDuration =
-                            (
-                                3 +
-                                Math.random() * 3
-                            ) +
-                            "s";
+                    document.body.appendChild(
+                        emoji
+                    );
 
 
-                        document.body.appendChild(
-                            emoji
-                        );
+                    setTimeout(function () {
 
+                        emoji.remove();
 
-                        setTimeout(
-                            function () {
+                    }, 7000);
 
-                                emoji.remove();
-
-                            },
-                            7000
-                        );
-
-                    },
-                    i * 120
-                );
+                }, i * 120);
 
             }
 
@@ -967,3 +581,5 @@
 
 </body>
 </html>
+
+change design, correct button is move to where the wrong button is press 
