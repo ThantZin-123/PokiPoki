@@ -16,87 +16,206 @@
 
         body {
             min-height: 100vh;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #ffd6e7, #d8f3ff);
+            font-family: "Arial", sans-serif;
+            background:
+                radial-gradient(circle at top left, #ffe8f1 0%, transparent 35%),
+                radial-gradient(circle at bottom right, #d9f5ff 0%, transparent 35%),
+                linear-gradient(135deg, #ffd6e7, #d8f3ff);
+
             display: flex;
             justify-content: center;
             align-items: center;
+
             padding: 20px;
             overflow-x: hidden;
         }
 
         .container {
             width: 100%;
-            max-width: 650px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 30px;
-            padding: 35px 25px;
+            max-width: 680px;
+
+            background: rgba(255, 255, 255, 0.92);
+
+            border: 1px solid rgba(255, 255, 255, 0.8);
+
+            border-radius: 32px;
+
+            padding: 42px 28px;
+
             text-align: center;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+
+            box-shadow:
+                0 25px 60px rgba(80, 50, 80, 0.18),
+                0 5px 15px rgba(0, 0, 0, 0.08);
+
+            backdrop-filter: blur(12px);
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            background: rgba(255, 182, 217, 0.25);
+
+            border-radius: 50%;
+
+            top: -90px;
+            left: -70px;
+        }
+
+        .container::after {
+            content: "";
+            position: absolute;
+
+            width: 160px;
+            height: 160px;
+
+            background: rgba(155, 231, 165, 0.2);
+
+            border-radius: 50%;
+
+            bottom: -80px;
+            right: -60px;
+        }
+
+        #question,
+        #reveal {
+            position: relative;
+            z-index: 2;
         }
 
         .main-icon {
-            font-size: 70px;
-            margin-bottom: 15px;
+            font-size: 72px;
+            margin-bottom: 18px;
+
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
         }
 
         h1 {
             color: #333;
             font-size: 38px;
-            margin-bottom: 15px;
+            font-weight: 800;
+
+            margin-bottom: 14px;
         }
 
         .description {
-            color: #666;
+            color: #777;
             font-size: 18px;
+            line-height: 1.5;
+
             margin-bottom: 30px;
         }
 
         .buttons {
             display: flex;
             flex-direction: column;
-            gap: 15px;
             align-items: center;
+            gap: 16px;
+
+            width: 100%;
+
+            position: relative;
         }
 
         button {
             width: 85%;
-            max-width: 350px;
-            padding: 16px 20px;
+            max-width: 380px;
+
+            padding: 17px 22px;
+
             border: none;
-            border-radius: 50px;
+            border-radius: 18px;
+
             font-size: 20px;
-            font-weight: bold;
+            font-weight: 700;
+
             cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.12);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                left 0.35s ease,
+                top 0.35s ease;
+
+            box-shadow:
+                0 8px 18px rgba(0, 0, 0, 0.12);
+
+            position: relative;
+
+            z-index: 5;
         }
 
         button:hover {
-            transform: scale(1.05);
+            transform: translateY(-4px) scale(1.02);
+
+            box-shadow:
+                0 14px 25px rgba(0, 0, 0, 0.16);
+        }
+
+        button:active {
+            transform: scale(0.96);
         }
 
         #iceCream {
-            background: #ffb6d9;
+            background: linear-gradient(
+                135deg,
+                #ffb6d9,
+                #ffc9e3
+            );
+
             color: #6b2148;
         }
 
         #hotpot {
-            background: #ffb36b;
-            color: #6b3514;
+            background: linear-gradient(
+                135deg,
+                #ffad66,
+                #ffd08a
+            );
+
+            color: #71370f;
         }
 
         #nothing {
-            background: #9be7a5;
+            background: linear-gradient(
+                135deg,
+                #91e6a0,
+                #c0f1c8
+            );
+
             color: #205a2b;
+
+            z-index: 20;
         }
 
         #message {
-            min-height: 30px;
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
+            min-height: 35px;
+
+            margin-top: 25px;
+
+            font-size: 19px;
+            font-weight: 700;
+
             color: #e75480;
+
+            transition: 0.3s;
         }
 
         #reveal {
@@ -105,49 +224,125 @@
 
         #reveal h1 {
             color: #e75480;
+
+            margin-bottom: 15px;
         }
 
         .final-text {
             font-size: 19px;
-            color: #555;
+            line-height: 1.6;
+
+            color: #666;
+
             margin-bottom: 25px;
+        }
+
+        .video-container {
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
         }
 
         video {
             width: 100%;
-            max-width: 550px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 560px;
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.2);
+
             background: #000;
+
+            display: block;
+        }
+
+        .small-text {
+            margin-top: 20px;
+
+            font-size: 14px;
+
+            color: #999;
         }
 
         .floating-food {
             position: fixed;
+
             pointer-events: none;
+
             font-size: 35px;
-            animation: floatUp 4s linear forwards;
+
+            animation:
+                floatUp 4s linear forwards;
+
             z-index: 9999;
         }
 
         @keyframes floatUp {
+
             0% {
-                transform: translateY(0) rotate(0deg);
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
                 opacity: 1;
             }
 
             100% {
-                transform: translateY(-100vh) rotate(360deg);
+                transform:
+                    translateY(-100vh)
+                    rotate(360deg);
+
                 opacity: 0;
             }
         }
 
+        .shake {
+            animation: shake 0.4s ease;
+        }
+
+        @keyframes shake {
+
+            0% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-8px);
+            }
+
+            50% {
+                transform: translateX(8px);
+            }
+
+            75% {
+                transform: translateX(-5px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
         @media (max-width: 500px) {
+
+            body {
+                padding: 12px;
+            }
+
             .container {
-                padding: 30px 18px;
+                padding: 32px 18px;
+
+                border-radius: 25px;
+            }
+
+            .main-icon {
+                font-size: 55px;
             }
 
             h1 {
-                font-size: 30px;
+                font-size: 29px;
             }
 
             .description {
@@ -155,12 +350,19 @@
             }
 
             button {
-                width: 95%;
+                width: 94%;
+
                 font-size: 18px;
+
+                padding: 16px 15px;
             }
 
-            .main-icon {
-                font-size: 55px;
+            #message {
+                font-size: 17px;
+            }
+
+            .final-text {
+                font-size: 17px;
             }
         }
     </style>
@@ -170,30 +372,45 @@
 
     <div class="container">
 
-        <!-- QUESTION SECTION -->
+        <!-- QUESTION -->
+
         <div id="question">
 
             <div class="main-icon">
                 🍦🍲
             </div>
 
-            <h1>Choose One 🍽️</h1>
+            <h1>
+                Choose One 🍽️
+            </h1>
 
-            <p class="description" id="description">
+            <p
+                class="description"
+                id="description"
+            >
                 Think carefully... Which one would you choose? 🤔
             </p>
 
             <div class="buttons">
 
-                <button id="iceCream" onclick="wrongChoice('Ice Cream')">
+                <button
+                    id="iceCream"
+                    onclick="wrongChoice('Ice Cream', this)"
+                >
                     🍦 Ice Cream
                 </button>
 
-                <button id="hotpot" onclick="wrongChoice('Hotpot')">
+                <button
+                    id="hotpot"
+                    onclick="wrongChoice('Hotpot', this)"
+                >
                     🍲 Hotpot
                 </button>
 
-                <button id="nothing" onclick="correctChoice()">
+                <button
+                    id="nothing"
+                    onclick="correctChoice()"
+                >
                     🚫 Nothing
                 </button>
 
@@ -204,7 +421,8 @@
         </div>
 
 
-        <!-- REVEAL SECTION -->
+        <!-- REVEAL -->
+
         <div id="reveal">
 
             <div class="main-icon">
@@ -219,17 +437,31 @@
                 Finally! You found the correct choice. 😆
             </p>
 
-            <video
-                id="finalVideo"
-                controls
-                autoplay
-                loop
-                playsinline
-                onplay="videoStarted()"
-            >
-                <source src="video.mp4" type="video/mp4">
-                Your browser does not support the video.
-            </video>
+            <div class="video-container">
+
+                <video
+                    id="finalVideo"
+                    controls
+                    autoplay
+                    loop
+                    playsinline
+                    onplay="videoStarted()"
+                >
+
+                    <source
+                        src="video.mp4"
+                        type="video/mp4"
+                    >
+
+                    Your browser does not support the video.
+
+                </video>
+
+            </div>
+
+            <p class="small-text">
+                Enjoy the video! 🍿✨
+            </p>
 
         </div>
 
@@ -239,33 +471,45 @@
     <script>
 
         // =====================================================
-        // FORMSPREE URL
-        // Replace this with your Formspree endpoint.
-        //
-        // Example:
-        // https://formspree.io/f/xxxxxxxx
+        // FORMSPREE
         // =====================================================
 
-        const FORMSPREE_URL = "https://formspree.io/f/mljdjlka";
+        const FORMSPREE_URL =
+            "https://formspree.io/f/mljdjlka";
 
 
         // =====================================================
         // VISITOR ID
         // =====================================================
 
-        let visitorId = sessionStorage.getItem("visitorId");
+        let visitorId =
+            sessionStorage.getItem("visitorId");
+
 
         if (!visitorId) {
 
-            if (window.crypto && crypto.randomUUID) {
-                visitorId = crypto.randomUUID();
+            if (
+                window.crypto &&
+                crypto.randomUUID
+            ) {
+
+                visitorId =
+                    crypto.randomUUID();
+
             } else {
+
                 visitorId =
                     Date.now().toString(36) +
-                    Math.random().toString(36).substring(2);
+                    Math.random()
+                        .toString(36)
+                        .substring(2);
+
             }
 
-            sessionStorage.setItem("visitorId", visitorId);
+            sessionStorage.setItem(
+                "visitorId",
+                visitorId
+            );
         }
 
 
@@ -274,43 +518,60 @@
         // =====================================================
 
         let wrongCount = 0;
+
         let videoLogged = false;
 
 
         // =====================================================
-        // FORMSPREE EVENT LOGGER
+        // FORMspree EVENT LOGGER
         // =====================================================
 
-        async function logEvent(event, option = "") {
+        async function logEvent(
+            event,
+            option = ""
+        ) {
 
             try {
 
-                await fetch(FORMSPREE_URL, {
+                await fetch(
+                    FORMSPREE_URL,
+                    {
 
-                    method: "POST",
+                        method: "POST",
 
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json"
-                    },
+                        headers: {
+                            "Content-Type":
+                                "application/json",
 
-                    body: JSON.stringify({
+                            "Accept":
+                                "application/json"
+                        },
 
-                        visitorId: visitorId,
+                        body: JSON.stringify({
 
-                        event: event,
+                            visitorId:
+                                visitorId,
 
-                        option: option,
+                            event:
+                                event,
 
-                        wrongCount: wrongCount,
+                            option:
+                                option,
 
-                        time: new Date().toISOString(),
+                            wrongCount:
+                                wrongCount,
 
-                        page: window.location.href
+                            time:
+                                new Date()
+                                    .toISOString(),
 
-                    })
+                            page:
+                                window.location.href
 
-                });
+                        })
+
+                    }
+                );
 
             } catch (error) {
 
@@ -328,21 +589,31 @@
         // PAGE VISIT
         // =====================================================
 
-        window.addEventListener("load", function () {
+        window.addEventListener(
+            "load",
+            function () {
 
-            logEvent("Page Visit");
+                logEvent(
+                    "Page Visit"
+                );
 
-        });
+            }
+        );
 
 
         // =====================================================
         // WRONG CHOICE
         // =====================================================
 
-        function wrongChoice(option) {
+        function wrongChoice(
+            option,
+            clickedButton
+        ) {
 
             wrongCount++;
 
+
+            // Log wrong button
             logEvent(
                 "Option Pressed",
                 option
@@ -350,14 +621,26 @@
 
 
             const message =
-                document.getElementById("message");
+                document.getElementById(
+                    "message"
+                );
+
 
             const description =
-                document.getElementById("description");
+                document.getElementById(
+                    "description"
+                );
+
 
             const nothingButton =
-                document.getElementById("nothing");
+                document.getElementById(
+                    "nothing"
+                );
 
+
+            // =================================================
+            // MESSAGE
+            // =================================================
 
             if (wrongCount === 1) {
 
@@ -411,35 +694,105 @@
 
 
             // =================================================
-            // MAKE NOTHING BUTTON HARDER TO PRESS
+            // SHAKE WRONG BUTTON
             // =================================================
 
-            const scale =
-                Math.min(1 + wrongCount * 0.08, 1.6);
+            clickedButton.classList.remove(
+                "shake"
+            );
 
-            nothingButton.style.transform =
-                `scale(${scale})`;
+            void clickedButton.offsetWidth;
+
+            clickedButton.classList.add(
+                "shake"
+            );
 
 
-            const maxMove =
-                Math.min(wrongCount * 10, 60);
+            // =================================================
+            // MOVE NOTHING BUTTON
+            // TO THE EXACT POSITION OF
+            // THE BUTTON THAT WAS PRESSED
+            // =================================================
+
+            const clickedRect =
+                clickedButton.getBoundingClientRect();
+
+
+            const nothingRect =
+                nothingButton.getBoundingClientRect();
+
+
+            /*
+                Calculate the center of the
+                clicked button.
+            */
+
+            const clickedCenterX =
+                clickedRect.left +
+                clickedRect.width / 2;
+
+
+            const clickedCenterY =
+                clickedRect.top +
+                clickedRect.height / 2;
+
+
+            /*
+                Calculate the center of
+                Nothing button.
+            */
+
+            const nothingCenterX =
+                nothingRect.left +
+                nothingRect.width / 2;
+
+
+            const nothingCenterY =
+                nothingRect.top +
+                nothingRect.height / 2;
+
+
+            /*
+                Calculate the difference.
+
+                This makes the Nothing button
+                move exactly where the wrong
+                button was clicked.
+            */
 
             const moveX =
-                (Math.random() * maxMove * 2) -
-                maxMove;
+                clickedCenterX -
+                nothingCenterX;
+
 
             const moveY =
-                (Math.random() * maxMove * 2) -
-                maxMove;
+                clickedCenterY -
+                nothingCenterY;
 
-            nothingButton.style.position =
-                "relative";
 
-            nothingButton.style.left =
-                moveX + "px";
+            /*
+                Keep Nothing button in
+                the same visual area.
+            */
 
-            nothingButton.style.top =
-                moveY + "px";
+            nothingButton.style.transform =
+                `translate(${moveX}px, ${moveY}px)`;
+
+
+            /*
+                Increase the size slightly
+                after each wrong attempt.
+            */
+
+            const scale =
+                Math.min(
+                    1 + wrongCount * 0.04,
+                    1.25
+                );
+
+
+            nothingButton.style.transform =
+                `translate(${moveX}px, ${moveY}px) scale(${scale})`;
 
         }
 
@@ -458,12 +811,14 @@
 
             document.getElementById(
                 "question"
-            ).style.display = "none";
+            ).style.display =
+                "none";
 
 
             document.getElementById(
                 "reveal"
-            ).style.display = "block";
+            ).style.display =
+                "block";
 
 
             const video =
@@ -475,13 +830,15 @@
             video.currentTime = 0;
 
 
-            video.play().catch(function () {
+            video.play().catch(
+                function () {
 
-                console.log(
-                    "Autoplay was blocked by browser."
-                );
+                    console.log(
+                        "Autoplay was blocked by browser."
+                    );
 
-            });
+                }
+            );
 
 
             createFoodEmojis();
@@ -498,6 +855,7 @@
             if (!videoLogged) {
 
                 videoLogged = true;
+
 
                 logEvent(
                     "Video Played",
@@ -516,6 +874,7 @@
         function createFoodEmojis() {
 
             const foods = [
+
                 "🍦",
                 "🍨",
                 "🍧",
@@ -526,52 +885,74 @@
                 "🍰",
                 "🍩",
                 "🍓"
+
             ];
 
 
-            for (let i = 0; i < 25; i++) {
+            for (
+                let i = 0;
+                i < 25;
+                i++
+            ) {
 
-                setTimeout(function () {
+                setTimeout(
+                    function () {
 
-                    const emoji =
-                        document.createElement("div");
-
-                    emoji.className =
-                        "floating-food";
-
-                    emoji.innerHTML =
-                        foods[
-                            Math.floor(
-                                Math.random() *
-                                foods.length
-                            )
-                        ];
+                        const emoji =
+                            document.createElement(
+                                "div"
+                            );
 
 
-                    emoji.style.left =
-                        Math.random() * 100 + "vw";
-
-                    emoji.style.top =
-                        "100vh";
+                        emoji.className =
+                            "floating-food";
 
 
-                    emoji.style.animationDuration =
-                        (3 + Math.random() * 3) +
-                        "s";
+                        emoji.innerHTML =
+                            foods[
+                                Math.floor(
+                                    Math.random() *
+                                    foods.length
+                                )
+                            ];
 
 
-                    document.body.appendChild(
-                        emoji
-                    );
+                        emoji.style.left =
+                            Math.random() *
+                            100 +
+                            "vw";
 
 
-                    setTimeout(function () {
+                        emoji.style.top =
+                            "100vh";
 
-                        emoji.remove();
 
-                    }, 7000);
+                        emoji.style.animationDuration =
+                            (
+                                3 +
+                                Math.random() * 3
+                            ) +
+                            "s";
 
-                }, i * 120);
+
+                        document.body.appendChild(
+                            emoji
+                        );
+
+
+                        setTimeout(
+                            function () {
+
+                                emoji.remove();
+
+                            },
+                            7000
+                        );
+
+
+                    },
+                    i * 120
+                );
 
             }
 
@@ -581,4 +962,3 @@
 
 </body>
 </html>
-
