@@ -251,6 +251,7 @@
                 id="finalVideo"
                 controls
                 autoplay
+                loop
                 playsinline
             >
                 <source src="video.mp4" type="video/mp4">
@@ -387,6 +388,8 @@
                 document.getElementById("finalVideo");
 
             video.currentTime = 0;
+
+            video.loop = true;
 
             video.play().catch(() => {});
 
