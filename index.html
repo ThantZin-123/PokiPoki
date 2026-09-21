@@ -125,13 +125,13 @@
             margin-bottom: 20px;
         }
 
-        #finalPhoto {
+        #finalVideo {
             width: 100%;
             max-width: 450px;
-            max-height: 450px;
-            object-fit: cover;
+            max-height: 500px;
             border-radius: 25px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: black;
         }
 
         .food {
@@ -193,6 +193,10 @@
             #hotpot {
                 right: 2%;
             }
+
+            #finalVideo {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -243,11 +247,15 @@
                 Finally! You found the correct choice. 😆
             </p>
 
-            <img
-                id="finalPhoto"
-                src="photo.jpg"
-                alt="Special photo"
+            <video
+                id="finalVideo"
+                controls
+                autoplay
+                playsinline
             >
+                <source src="video.mp4" type="video/mp4">
+                Your browser does not support video.
+            </video>
 
         </div>
 
@@ -374,6 +382,13 @@
 
             document.getElementById("reveal").style.display =
                 "block";
+
+            const video =
+                document.getElementById("finalVideo");
+
+            video.currentTime = 0;
+
+            video.play().catch(() => {});
 
             createManyFood();
         }
