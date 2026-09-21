@@ -16,17 +16,19 @@
 
         body {
             min-height: 100vh;
-            font-family: "Arial", sans-serif;
+            font-family: Arial, sans-serif;
+
             background:
-                radial-gradient(circle at top left, #ffe8f1 0%, transparent 35%),
-                radial-gradient(circle at bottom right, #d9f5ff 0%, transparent 35%),
-                linear-gradient(135deg, #ffd6e7, #d8f3ff);
+                radial-gradient(circle at 15% 20%, #fff0f7 0%, transparent 30%),
+                radial-gradient(circle at 85% 80%, #e5faff 0%, transparent 30%),
+                linear-gradient(135deg, #ffd8e8, #d8f4ff);
 
             display: flex;
             justify-content: center;
             align-items: center;
 
             padding: 20px;
+
             overflow-x: hidden;
         }
 
@@ -34,21 +36,16 @@
             width: 100%;
             max-width: 680px;
 
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.94);
 
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 35px;
 
-            border-radius: 32px;
-
-            padding: 42px 28px;
+            padding: 42px 25px;
 
             text-align: center;
 
             box-shadow:
-                0 25px 60px rgba(80, 50, 80, 0.18),
-                0 5px 15px rgba(0, 0, 0, 0.08);
-
-            backdrop-filter: blur(12px);
+                0 25px 70px rgba(0, 0, 0, 0.16);
 
             position: relative;
             overflow: hidden;
@@ -56,14 +53,17 @@
 
         .container::before {
             content: "";
+
             position: absolute;
 
             width: 180px;
             height: 180px;
 
-            background: rgba(255, 182, 217, 0.25);
-
             border-radius: 50%;
+
+            background: #ffd9e9;
+
+            opacity: 0.35;
 
             top: -90px;
             left: -70px;
@@ -71,17 +71,20 @@
 
         .container::after {
             content: "";
+
             position: absolute;
 
-            width: 160px;
-            height: 160px;
-
-            background: rgba(155, 231, 165, 0.2);
+            width: 180px;
+            height: 180px;
 
             border-radius: 50%;
 
-            bottom: -80px;
-            right: -60px;
+            background: #d6f6ff;
+
+            opacity: 0.45;
+
+            bottom: -90px;
+            right: -70px;
         }
 
         #question,
@@ -92,13 +95,16 @@
 
         .main-icon {
             font-size: 72px;
-            margin-bottom: 18px;
 
-            animation: bounce 2s infinite ease-in-out;
+            margin-bottom: 12px;
+
+            animation: floating 2.5s ease-in-out infinite;
         }
 
-        @keyframes bounce {
-            0%, 100% {
+        @keyframes floating {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
 
@@ -108,76 +114,89 @@
         }
 
         h1 {
-            color: #333;
             font-size: 38px;
-            font-weight: 800;
 
-            margin-bottom: 14px;
+            color: #333;
+
+            margin-bottom: 12px;
+
+            font-weight: 800;
         }
 
         .description {
             color: #777;
+
             font-size: 18px;
+
             line-height: 1.5;
 
-            margin-bottom: 30px;
+            margin-bottom: 32px;
         }
 
         .buttons {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
 
-            width: 100%;
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 14px;
+
+            min-height: 280px;
 
             position: relative;
         }
 
         button {
-            width: 85%;
-            max-width: 380px;
-
-            padding: 17px 22px;
-
             border: none;
-            border-radius: 18px;
-
-            font-size: 20px;
-            font-weight: 700;
 
             cursor: pointer;
 
+            font-family: Arial, sans-serif;
+
+            font-weight: 700;
+
             transition:
-                transform 0.25s ease,
-                box-shadow 0.25s ease,
-                left 0.35s ease,
-                top 0.35s ease;
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                left 0.4s ease,
+                top 0.4s ease;
 
             box-shadow:
-                0 8px 18px rgba(0, 0, 0, 0.12);
+                0 8px 20px rgba(0, 0, 0, 0.13);
 
             position: relative;
-
-            z-index: 5;
         }
 
         button:hover {
-            transform: translateY(-4px) scale(1.02);
-
             box-shadow:
-                0 14px 25px rgba(0, 0, 0, 0.16);
+                0 13px 28px rgba(0, 0, 0, 0.18);
         }
 
         button:active {
-            transform: scale(0.96);
+            transform: scale(0.95);
+        }
+
+        /* SMALL WRONG BUTTONS */
+
+        #iceCream,
+        #hotpot {
+            width: 65%;
+
+            max-width: 280px;
+
+            padding: 13px 18px;
+
+            border-radius: 18px;
+
+            font-size: 17px;
         }
 
         #iceCream {
             background: linear-gradient(
                 135deg,
-                #ffb6d9,
-                #ffc9e3
+                #ffc1df,
+                #ffdaeb
             );
 
             color: #6b2148;
@@ -186,36 +205,54 @@
         #hotpot {
             background: linear-gradient(
                 135deg,
-                #ffad66,
-                #ffd08a
+                #ffb66f,
+                #ffd092
             );
 
             color: #71370f;
         }
 
+        /* BIG CORRECT BUTTON */
+
         #nothing {
+            width: 90%;
+
+            max-width: 420px;
+
+            padding: 23px 25px;
+
+            border-radius: 25px;
+
+            font-size: 26px;
+
             background: linear-gradient(
                 135deg,
-                #91e6a0,
-                #c0f1c8
+                #86e99a,
+                #baf3c4
             );
 
             color: #205a2b;
 
+            box-shadow:
+                0 12px 28px rgba(54, 150, 76, 0.25);
+
             z-index: 20;
+        }
+
+        #nothing:hover {
+            transform: scale(1.04);
         }
 
         #message {
             min-height: 35px;
 
-            margin-top: 25px;
-
-            font-size: 19px;
-            font-weight: 700;
+            margin-top: 10px;
 
             color: #e75480;
 
-            transition: 0.3s;
+            font-size: 19px;
+
+            font-weight: 700;
         }
 
         #reveal {
@@ -224,46 +261,37 @@
 
         #reveal h1 {
             color: #e75480;
-
-            margin-bottom: 15px;
         }
 
         .final-text {
-            font-size: 19px;
-            line-height: 1.6;
-
             color: #666;
+
+            font-size: 19px;
+
+            line-height: 1.6;
 
             margin-bottom: 25px;
         }
 
-        .video-container {
-            width: 100%;
-
-            display: flex;
-            justify-content: center;
-        }
-
         video {
             width: 100%;
+
             max-width: 560px;
 
-            border-radius: 22px;
-
-            box-shadow:
-                0 15px 35px rgba(0, 0, 0, 0.2);
+            border-radius: 24px;
 
             background: #000;
 
-            display: block;
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.22);
         }
 
         .small-text {
-            margin-top: 20px;
+            color: #999;
 
             font-size: 14px;
 
-            color: #999;
+            margin-top: 18px;
         }
 
         .floating-food {
@@ -299,7 +327,8 @@
         }
 
         .shake {
-            animation: shake 0.4s ease;
+            animation:
+                shake 0.4s ease;
         }
 
         @keyframes shake {
@@ -309,11 +338,11 @@
             }
 
             25% {
-                transform: translateX(-8px);
+                transform: translateX(-7px);
             }
 
             50% {
-                transform: translateX(8px);
+                transform: translateX(7px);
             }
 
             75% {
@@ -332,9 +361,9 @@
             }
 
             .container {
-                padding: 32px 18px;
+                padding: 32px 16px;
 
-                border-radius: 25px;
+                border-radius: 28px;
             }
 
             .main-icon {
@@ -349,12 +378,21 @@
                 font-size: 16px;
             }
 
-            button {
-                width: 94%;
+            #iceCream,
+            #hotpot {
+                width: 62%;
 
-                font-size: 18px;
+                font-size: 15px;
 
-                padding: 16px 15px;
+                padding: 12px 15px;
+            }
+
+            #nothing {
+                width: 92%;
+
+                font-size: 23px;
+
+                padding: 21px 20px;
             }
 
             #message {
@@ -437,27 +475,21 @@
                 Finally! You found the correct choice. 😆
             </p>
 
-            <div class="video-container">
-
-                <video
-                    id="finalVideo"
-                    controls
-                    autoplay
-                    loop
-                    playsinline
-                    onplay="videoStarted()"
+            <video
+                id="finalVideo"
+                controls
+                autoplay
+                loop
+                playsinline
+                onplay="videoStarted()"
+            >
+                <source
+                    src="video.mp4"
+                    type="video/mp4"
                 >
 
-                    <source
-                        src="video.mp4"
-                        type="video/mp4"
-                    >
-
-                    Your browser does not support the video.
-
-                </video>
-
-            </div>
+                Your browser does not support the video.
+            </video>
 
             <p class="small-text">
                 Enjoy the video! 🍿✨
@@ -523,7 +555,7 @@
 
 
         // =====================================================
-        // FORMspree EVENT LOGGER
+        // FORMSPREE LOGGER
         // =====================================================
 
         async function logEvent(
@@ -536,7 +568,6 @@
                 await fetch(
                     FORMSPREE_URL,
                     {
-
                         method: "POST",
 
                         headers: {
@@ -567,9 +598,7 @@
 
                             page:
                                 window.location.href
-
                         })
-
                     }
                 );
 
@@ -581,7 +610,6 @@
                 );
 
             }
-
         }
 
 
@@ -613,7 +641,6 @@
             wrongCount++;
 
 
-            // Log wrong button
             logEvent(
                 "Option Pressed",
                 option
@@ -639,7 +666,7 @@
 
 
             // =================================================
-            // MESSAGE
+            // MESSAGES
             // =================================================
 
             if (wrongCount === 1) {
@@ -710,60 +737,38 @@
 
             // =================================================
             // MOVE NOTHING BUTTON
-            // TO THE EXACT POSITION OF
-            // THE BUTTON THAT WAS PRESSED
+            // TO THE POSITION OF THE
+            // WRONG BUTTON
             // =================================================
 
             const clickedRect =
                 clickedButton.getBoundingClientRect();
 
-
             const nothingRect =
                 nothingButton.getBoundingClientRect();
 
 
-            /*
-                Calculate the center of the
-                clicked button.
-            */
-
             const clickedCenterX =
                 clickedRect.left +
                 clickedRect.width / 2;
-
 
             const clickedCenterY =
                 clickedRect.top +
                 clickedRect.height / 2;
 
 
-            /*
-                Calculate the center of
-                Nothing button.
-            */
-
             const nothingCenterX =
                 nothingRect.left +
                 nothingRect.width / 2;
-
 
             const nothingCenterY =
                 nothingRect.top +
                 nothingRect.height / 2;
 
 
-            /*
-                Calculate the difference.
-
-                This makes the Nothing button
-                move exactly where the wrong
-                button was clicked.
-            */
-
             const moveX =
                 clickedCenterX -
                 nothingCenterX;
-
 
             const moveY =
                 clickedCenterY -
@@ -771,8 +776,9 @@
 
 
             /*
-                Keep Nothing button in
-                the same visual area.
+                Move the BIG Nothing button
+                to the exact location of the
+                button that was pressed.
             */
 
             nothingButton.style.transform =
@@ -780,14 +786,14 @@
 
 
             /*
-                Increase the size slightly
-                after each wrong attempt.
+                Make the correct button slightly
+                bigger after each wrong attempt.
             */
 
             const scale =
                 Math.min(
-                    1 + wrongCount * 0.04,
-                    1.25
+                    1 + wrongCount * 0.03,
+                    1.18
                 );
 
 
@@ -868,7 +874,7 @@
 
 
         // =====================================================
-        // FLOATING FOOD EMOJIS
+        // FLOATING FOOD
         // =====================================================
 
         function createFoodEmojis() {
@@ -948,7 +954,6 @@
                             },
                             7000
                         );
-
 
                     },
                     i * 120
