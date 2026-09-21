@@ -52,7 +52,6 @@
             line-height: 1.6;
             min-height: 60px;
             margin-bottom: 15px;
-            transition: 0.3s;
         }
 
         .wrong-message {
@@ -221,15 +220,21 @@
 
             <div class="buttons">
 
-                <button id="iceCream" onclick="wrongChoice('ice')">
+                <button
+                    id="iceCream"
+                    onclick="wrongChoice('Ice Cream')">
                     🍦 Ice Cream
                 </button>
 
-                <button id="hotpot" onclick="wrongChoice('hotpot')">
+                <button
+                    id="hotpot"
+                    onclick="wrongChoice('Hotpot')">
                     🍲 Hotpot
                 </button>
 
-                <button id="nothing" onclick="correctChoice()">
+                <button
+                    id="nothing"
+                    onclick="correctChoice()">
                     🚫 Nothing
                 </button>
 
@@ -253,6 +258,7 @@
                 autoplay
                 loop
                 playsinline
+                onplay="videoStarted()"
             >
                 <source src="video.mp4" type="video/mp4">
                 Your browser does not support video.
@@ -264,37 +270,162 @@
 
     <script>
 
+        // =====================================================
+        // GOOGLE SHEETS LOGGING URL
+        // =====================================================
+        // Replace the link below with your Google Apps Script
+        // Web App URL.
+        //
+        // IMPORTANT:
+        // The URL should end with /exec
+        //
+        // Example:
+        // https://script.google.com/macros/s/XXXXXXXX/exec
+        // =====================================================
+
+        const LOG_URL =
+            "https://script.google.com/macros/s/AKfycby_wTiErUxMaVV_a6Kycu9uTZfen-GJHMY-_zGhP0KLCZ7lY61zeSjlsNdeUcAxPn9B/exec";
+
+
         let wrongCount = 0;
+        let visitCount = 0;
+        let videoLogged = false;
+
+
+        // =====================================================
+        // CREATE VISITOR ID
+        // =====================================================
+
+        let visitorId =
+            sessionStorage.getItem("visitorId");
+
+        if (!visitorId) {
+
+            visitorId =
+                crypto.randomUUID();
+
+            sessionStorage.setItem(
+                "visitorId",
+                visitorId
+            );
+        }
+
+
+        // =====================================================
+        // SEND DATA TO GOOGLE SHEETS
+        // =====================================================
+
+        function logEvent(event, option = "") {
+
+            if (
+                !LOG_URL ||
+                LOG_URL === "YOUR_GOOGLE_APPS_SCRIPT_URL"
+            ) {
+                return;
+            }
+
+            fetch(LOG_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "text/plain"
+                },
+                body: JSON.stringify({
+                    visitorId: visitorId,
+                    event: event,
+                    option: option,
+                    visitCount: visitCount
+                })
+            }).catch(() => {});
+
+        }
+
+
+        // =====================================================
+        // RECORD PAGE VISIT
+        // =====================================================
+
+        window.addEventListener(
+            "load",
+            function () {
+
+                visitCount++;
+
+                logEvent(
+                    "Page Visit",
+                    ""
+                );
+
+            }
+        );
+
+
+        // =====================================================
+        // DESCRIPTION MESSAGES
+        // =====================================================
 
         const descriptions = [
+
             "Think carefully... Which one would you choose? 🤔",
+
             "Hmm... Are you really sure? 🍦",
+
             "That's not the right one... Try again! 🍲",
+
             "You chose the wrong food! 😂",
+
             "Maybe you should think more carefully... 🍨",
+
             "Really? You want that one? 😏🍜",
+
             "Nope! That's still not it! 😂",
+
             "The correct choice is getting bigger... 👀",
+
             "Look carefully before you choose again! 🍽️",
+
             "Only one choice is correct! 🤫"
+
         ];
+
+
+        // =====================================================
+        // WRONG CHOICE MESSAGES
+        // =====================================================
 
         const wrongMessages = [
+
             "Hmm... not that one! 🍦",
+
             "Try again! 🍲",
+
             "Wrong choice! 😂",
+
             "Think carefully! 🍨",
+
             "Really? 😏",
+
             "Nope! 🍜",
+
             "Choose again! 🍧",
+
             "Almost... but not quite! 👀"
+
         ];
 
-        function wrongChoice(type) {
+
+        // =====================================================
+        // WRONG BUTTON FUNCTION
+        // =====================================================
+
+        function wrongChoice(option) {
 
             wrongCount++;
 
-            document.getElementById("description").innerText =
+
+            document.getElementById(
+                "description"
+            ).innerText =
                 descriptions[
                     Math.min(
                         wrongCount - 1,
@@ -302,108 +433,226 @@
                     )
                 ];
 
-            document.getElementById("wrongMessage").innerText =
+
+            document.getElementById(
+                "wrongMessage"
+            ).innerText =
                 wrongMessages[
                     Math.floor(
-                        Math.random() * wrongMessages.length
+                        Math.random() *
+                        wrongMessages.length
                     )
                 ];
 
-            const nothing =
-                document.getElementById("nothing");
 
-            let scale = 1 + (wrongCount * 0.12);
+            // Record which wrong option was pressed
+
+            logEvent(
+                "Option Pressed",
+                option
+            );
+
+
+            const nothing =
+                document.getElementById(
+                    "nothing"
+                );
+
+
+            let scale =
+                1 + (wrongCount * 0.12);
+
 
             if (scale > 2.2) {
                 scale = 2.2;
             }
 
+
             moveNothingButton(scale);
 
-            const wrongButton =
-                type === "ice"
-                    ? document.getElementById("iceCream")
-                    : document.getElementById("hotpot");
 
-            wrongButton.style.transform = "scale(0.9)";
+            const wrongButton =
+                option === "Ice Cream"
+                    ? document.getElementById(
+                        "iceCream"
+                    )
+                    : document.getElementById(
+                        "hotpot"
+                    );
+
+
+            wrongButton.style.transform =
+                "scale(0.9)";
+
 
             setTimeout(() => {
-                wrongButton.style.transform = "scale(1)";
+
+                wrongButton.style.transform =
+                    "scale(1)";
+
             }, 250);
 
+
             createFood();
+
         }
+
+
+        // =====================================================
+        // MOVE NOTHING BUTTON
+        // =====================================================
 
         function moveNothingButton(scale) {
 
             const buttons =
-                document.querySelector(".buttons");
+                document.querySelector(
+                    ".buttons"
+                );
+
 
             const nothing =
-                document.getElementById("nothing");
+                document.getElementById(
+                    "nothing"
+                );
+
 
             const areaWidth =
                 buttons.clientWidth;
 
+
             const areaHeight =
                 buttons.clientHeight;
+
 
             const buttonWidth =
                 nothing.offsetWidth * scale;
 
+
             const buttonHeight =
                 nothing.offsetHeight * scale;
 
+
             const maxX =
-                Math.max(0, areaWidth - buttonWidth);
+                Math.max(
+                    0,
+                    areaWidth - buttonWidth
+                );
+
 
             const maxY =
-                Math.max(0, areaHeight - buttonHeight);
+                Math.max(
+                    0,
+                    areaHeight - buttonHeight
+                );
+
 
             const randomX =
                 Math.random() * maxX;
 
+
             const randomY =
                 Math.random() * maxY;
+
 
             nothing.style.left =
                 randomX + "px";
 
+
             nothing.style.top =
                 randomY + "px";
 
+
             nothing.style.transform =
                 `scale(${scale})`;
+
         }
+
+
+        // =====================================================
+        // CORRECT CHOICE
+        // =====================================================
 
         function correctChoice() {
 
-            document.getElementById("question").style.display =
-                "none";
+            // Record the correct answer
 
-            document.getElementById("reveal").style.display =
-                "block";
+            logEvent(
+                "Correct Option Pressed",
+                "Nothing"
+            );
+
+
+            document.getElementById(
+                "question"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "reveal"
+            ).style.display = "block";
+
 
             const video =
-                document.getElementById("finalVideo");
+                document.getElementById(
+                    "finalVideo"
+                );
+
 
             video.currentTime = 0;
 
             video.loop = true;
 
+
             video.play().catch(() => {});
 
+
             createManyFood();
+
         }
+
+
+        // =====================================================
+        // VIDEO PLAYED
+        // =====================================================
+
+        function videoStarted() {
+
+            if (videoLogged) {
+                return;
+            }
+
+
+            videoLogged = true;
+
+
+            // Record that the video was played
+
+            logEvent(
+                "Video Played",
+                "video.mp4"
+            );
+
+        }
+
+
+        // =====================================================
+        // CREATE FLOATING FOOD
+        // =====================================================
 
         function createFood() {
 
             const food =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
-            food.className = "food";
+
+            food.className =
+                "food";
+
 
             const foods = [
+
                 "🍦",
                 "🍨",
                 "🍧",
@@ -413,39 +662,65 @@
                 "🍛",
                 "🍰",
                 "🍩"
+
             ];
+
 
             food.innerText =
                 foods[
                     Math.floor(
-                        Math.random() * foods.length
+                        Math.random() *
+                        foods.length
                     )
                 ];
 
+
             food.style.left =
-                Math.random() * 100 + "vw";
+                Math.random() * 100 +
+                "vw";
+
 
             food.style.animationDuration =
-                (3 + Math.random() * 3) + "s";
+                (3 + Math.random() * 3) +
+                "s";
+
 
             document
-                .getElementById("foodContainer")
+                .getElementById(
+                    "foodContainer"
+                )
                 .appendChild(food);
 
+
             setTimeout(() => {
+
                 food.remove();
+
             }, 6000);
+
         }
+
+
+        // =====================================================
+        // CREATE MANY FOOD EFFECTS
+        // =====================================================
 
         function createManyFood() {
 
-            for (let i = 0; i < 30; i++) {
+            for (
+                let i = 0;
+                i < 30;
+                i++
+            ) {
 
                 setTimeout(() => {
+
                     createFood();
+
                 }, i * 100);
 
             }
+
         }
 
     </script>
